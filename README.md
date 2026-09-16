@@ -8,7 +8,7 @@
   - Emylly Lorrany de Souza Coelho
   - Fellype Rodrigues de Macedo
   - Mikhael Geraldo da Silva Sousa
-  - Moisés de Macedo Gomes 
+  - Moisés de Macedo Gomes
 4. Stack tecnológico utilizado
   - Python
   - Django
