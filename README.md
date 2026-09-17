@@ -1,7 +1,7 @@
 # controle-academico
 1. Nome: "Controle Academico IFPI"
 2. Setor de controle acadêmico
-   2.1 Confere os documentos dos alunos para a conclusão do ensino médio
+  2.1 Confere os documentos dos alunos para a conclusão do ensino médio
 3. Nome dos integrantres:
   - Ana Maria Cavalcante de Sousa
   - Ananda Isabele Barros Amorim
