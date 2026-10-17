@@ -1,0 +1,147 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header class="top">
+        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
+        </div>
+        <nav class="nav"><a class="" href="{% url 'pendencias' %}">Pendências</a><a class="" href="{% url 'biblioteca' %}">Biblioteca
+                <span class="count">4</span></a><a class="" href="{% url 'disciplina' %}">Disciplina <span
+                    class="count">6</span></a><a class="active" href="{% url 'turmas' %}">Turmas e Alunos</a></nav>
+        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
+            href="{% url 'index' %}">Sair</a>
+    </header>
+    <main class="page">
+        <div class="wrap">
+            <div class="between">
+                <div>
+                    <h1 class="title">Turmas e Alunos</h1>
+                    <p class="subtitle">Gerencie as turmas concluintes e seus alunos.</p>
+                </div>
+                <form method="post" action="/turmas/nova/"><button class="btn green">+ Nova Turma</button></form>
+            </div>
+            <div style="margin-top:18px">
+                <section class="card course">
+                    <div class="course-head between">
+                        <div><b>Agropecuária — 3º ano A</b>
+                            <div class="tiny muted">4 aluno(s)</div>
+                        </div>
+                        <form method="post" action="/alunos/novo/"><button class="btn outline sm">+ Aluno</button>
+                        </form>
+                    </div>
+                    <div class="students">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><b>Ana Beatriz Sousa Lima</b>
+                                        <div class="tiny muted">2022001</div>
+                                    </td>
+                                    <td>ana.lima@ifpi.edu.br</td>
+                                    <td><span class="badge apto">Apto</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Bruno Henrique Alves</b>
+                                        <div class="tiny muted">2022002</div>
+                                    </td>
+                                    <td>bruno.alves@ifpi.edu.br</td>
+                                    <td><span class="badge pendente">Pendente</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Carla Eduarda Rodrigues</b>
+                                        <div class="tiny muted">2022003</div>
+                                    </td>
+                                    <td>carla.rodrigues@ifpi.edu.br</td>
+                                    <td><span class="badge apto">Apto</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Diego Martins Pereira</b>
+                                        <div class="tiny muted">2022004</div>
+                                    </td>
+                                    <td>diego.pereira@ifpi.edu.br</td>
+                                    <td><span class="badge pendente">Pendente</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="card course">
+                    <div class="course-head between">
+                        <div><b>Informática para Internet — 3º ano A</b>
+                            <div class="tiny muted">3 aluno(s)</div>
+                        </div>
+                        <form method="post" action="/alunos/novo/"><button class="btn outline sm">+ Aluno</button>
+                        </form>
+                    </div>
+                    <div class="students">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td><b>Karen Oliveira Dias</b>
+                                        <div class="tiny muted">2022021</div>
+                                    </td>
+                                    <td>karen.dias@ifpi.edu.br</td>
+                                    <td><span class="badge apto">Apto</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Larissa Santos Cruz</b>
+                                        <div class="tiny muted">2022022</div>
+                                    </td>
+                                    <td>larissa.santos@ifpi.edu.br</td>
+                                    <td><span class="badge pendente">Pendente</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Marcos Vinicius Barros</b>
+                                        <div class="tiny muted">2022023</div>
+                                    </td>
+                                    <td>marcos.barros@ifpi.edu.br</td>
+                                    <td><span class="badge apto">Apto</span></td>
+                                    <td>
+                                        <form method="post" action="/alunos/remover/"><button
+                                                class="btn outline sm">Remover</button></form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
+            Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
+</body>
+
+</html>

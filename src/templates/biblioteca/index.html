@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header class="top">
+        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
+        </div>
+        <nav class="nav"><a class="" href="{% url 'pendencias' %}">Pendências</a><a class="active"
+                href="{% url 'biblioteca' %}">Biblioteca <span class="count">4</span></a><a class=""
+                href="{% url 'disciplina' %}">Disciplina <span class="count">6</span></a><a class="" href="{% url 'turmas' %}">Turmas
+                e Alunos</a></nav>
+        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
+            href="{% url 'index' %}">Sair</a>
+    </header>
+    <main class="page">
+        <div class="wrap">
+            <h1 class="title">Pendências da Biblioteca</h1>
+            <p class="subtitle">Boletos e livros não devolvidos.</p>
+            <form class="toolbar" method="get"><input class="input" name="q" placeholder="Buscar aluno"><button
+                    class="btn outline">Buscar</button></form>
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Curso / Turma</th>
+                            <th>Pendências</th>
+                            <th>Sincronização</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Bruno Henrique Alves</b>
+                                <div class="tiny muted">2022002</div>
+                            </td>
+                            <td>Agropecuária · 3º ano A</td>
+                            <td><span class="badge incompleto">1</span></td>
+                            <td class="tiny muted">16/08/2025 às 09:14</td>
+                        </tr>
+                        <tr>
+                            <td><b>Diego Martins Pereira</b>
+                                <div class="tiny muted">2022004</div>
+                            </td>
+                            <td>Agropecuária · 3º ano A</td>
+                            <td><span class="badge incompleto">2</span></td>
+                            <td class="tiny muted">16/08/2025 às 09:14</td>
+                        </tr>
+                        <tr>
+                            <td><b>Isabela Ferreira Lima</b>
+                                <div class="tiny muted">2022012</div>
+                            </td>
+                            <td>Mineração · 3º ano A</td>
+                            <td><span class="badge incompleto">2</span></td>
+                            <td class="tiny muted">16/08/2025 às 09:14</td>
+                        </tr>
+                        <tr>
+                            <td><b>Larissa Santos Cruz</b>
+                                <div class="tiny muted">2022022</div>
+                            </td>
+                            <td>Informática · 3º ano A</td>
+                            <td><span class="badge incompleto">2</span></td>
+                            <td class="tiny muted">16/08/2025 às 09:14</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
+            Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 """
-URL configuration for src project.
+URL configuration for controle_academico project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.1/topics/http/urls/
@@ -17,6 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from src.views import \
+    alunos, \
+    autenticacao, \
+    biblioteca, \
+    disciplina, \
+    pendencias, \
+    turmas
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', autenticacao.login, name='index'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('alunos/bruno/', alunos.aluno, name='aluno'),
+    path('login/', autenticacao.login, name='login'),
+    path('biblioteca/', biblioteca.index, name='biblioteca'),
+    path('disciplina/', disciplina.index, name='disciplina'),
+    path('pendencias/', pendencias.index, name='pendencias'),
+    path('turmas/', turmas.index, name='turmas'),
 ]
+

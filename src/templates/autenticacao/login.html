@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <style>
+        .nav a {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            color: #d1fae5;
+            padding: 0 16px
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login">
+        <div class="loginbox">
+            <div style="text-align:center"><span
+                    class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <h2>Controle Acadêmico</h2>
+                <p class="subtitle">Sistema de Colação de Grau · Acesso restrito a servidores</p>
+            </div>
+            <form class="card login-card" method="get" action="{% url 'pendencias' %}">
+                <div class="field"><label for="login">Login / Matrícula SUAP</label><input id="login" name="login"
+                        class="input" value="servidor.academico"></div>
+                <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" class="input"
+                        type="password" value="ifpi@2025"></div><button class="btn green" style="width:100%"
+                    type="submit">Entrar</button>
+                <button type="button" onclick="mostrarSenha()">Mostrar Senha</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

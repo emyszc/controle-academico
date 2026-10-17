@@ -13,14 +13,15 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+APP_DIR = Path(__file__).resolve().parent
+BASE_DIR = APP_DIR.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=@3j9eiawsb%x#6#q_!0l@=n#wlr^v7)u+uk6x@i63%qfh4_=j'
+SECRET_KEY = 'django-insecure-s$!v!a75qlag#!v(zm_yy4l)856#q8z%&vx2@_u1rj8rh+@j@='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'src',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +117,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = APP_DIR / 'static'
 
 
 # Email

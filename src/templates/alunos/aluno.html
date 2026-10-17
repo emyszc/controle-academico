@@ -1,0 +1,158 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header class="top">
+        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
+        </div>
+        <nav class="nav"><a class="active" href="{% url 'pendencias' %}">Pendências</a><a class=""
+                href="{% url 'biblioteca' %}">Biblioteca <span class="count">4</span></a><a class=""
+                href="{% url 'disciplina' %}">Disciplina <span class="count">6</span></a><a class="" href="{% url 'turmas' %}">Turmas
+                e Alunos</a></nav>
+        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
+            href="{% url 'index' %}">Sair</a>
+    </header>
+    <main class="page">
+        <div class="wrap">
+            <p><a class="tiny muted" href="{% url 'pendencias' %}">← Voltar para pendências</a></p>
+            <div class="grid2">
+                <section class="card">
+                    <div class="panel-head">
+                        <h1 class="title">Bruno Henrique Alves</h1>
+                        <p class="subtitle">Matrícula 2022002 · Agropecuária · 3º ano A</p>
+                    </div>
+                    <div class="section">
+                        <h2 style="font-size:14px">Dados do aluno</h2>
+                        <p class="tiny"><b>CPF:</b> 987.654.321-11</p>
+                        <p class="tiny"><b>E-mail:</b> bruno.alves@ifpi.edu.br</p>
+                        <div class="notice amber">Situação geral: <b>Pendente</b></div>
+                    </div>
+                </section>
+                <aside class="card">
+                    <div class="tabs"><a class="active" href="#documentos">Documentos <span class="count">5</span></a><a
+                            href="#biblioteca">Biblioteca <span class="count">1</span></a><a
+                            href="#disciplina">Disciplina <span class="count">1</span></a></div>
+                    <section id="documentos" class="section">
+                        <div class="between"><b class="tiny">DOCUMENTOS DE CONCLUSÃO</b><span>2/7</span></div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot done">✓</span>
+                                <div>
+                                    <div class="tiny">Histórico Escolar (Ensino Médio)</div>
+                                    <div class="tiny muted">08/08/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot done">✓</span>
+                                <div>
+                                    <div class="tiny">Certificado de Conclusão do Ensino Médio</div>
+                                    <div class="tiny muted">08/08/2025</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">RG (cópia autenticada)</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">CPF (cópia)</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">Certidão de Nascimento ou Casamento</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">Título de Eleitor (opcional)</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">Comprovante de Quitação Eleitoral (opcional)</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">Comprovante de Alistamento Militar</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                        <div class="doc between">
+                            <div class="row"><span class="dot "></span>
+                                <div>
+                                    <div class="tiny">Foto 3x4</div>
+                                </div>
+                            </div>
+                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
+                                    class="btn green sm">Aprovar</button></form>
+                            <form class="action-form" method="post" action="/documentos/recusar/"><button
+                                    class="btn outline sm">Recusar</button></form>
+                        </div>
+                    </section>
+                    <section id="biblioteca" class="section"><b class="tiny">BIBLIOTECA</b>
+                        <div class="notice red"><b>Multa — Zootecnia Básica</b><br>R$ 12,50 · vencimento 20/08/2025
+                        </div>
+                        <p class="tiny muted">Sincronizado em 16/08/2025 às 09:14</p>
+                    </section>
+                    <section id="disciplina" class="section"><b class="tiny">DISCIPLINA</b>
+                        <div class="notice red">Chave de armário não devolvida — 14B</div>
+                        <div class="notice green">✓ Nenhum livro didático pendente</div>
+                        <p class="tiny muted">Sincronizado em 16/08/2025 às 08:52</p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
+            Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
+</body>
+
+</html>

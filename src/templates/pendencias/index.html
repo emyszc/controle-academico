@@ -1,0 +1,143 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <header class="top">
+        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
+        </div>
+        <nav class="nav"><a class="active" href="{% url 'pendencias' %}">Pendências</a><a class=""
+                href="{% url 'biblioteca' %}">Biblioteca <span class="count">4</span></a><a class=""
+                href="{% url 'disciplina' %}">Disciplina <span class="count">6</span></a><a class="" href="{% url 'turmas' %}">Turmas
+                e Alunos</a></nav>
+        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
+            href="{% url 'index' %}">Sair</a>
+    </header>
+    <main class="page">
+        <div class="wrap">
+            <h1 class="title">Pendências para Colação de Grau</h1>
+            <p class="subtitle">Acompanhe documentos e pendências dos alunos concluintes.</p>
+            <form class="toolbar" method="get"><input class="input" name="q"
+                    placeholder="Buscar aluno ou matrícula"><select class="select" name="curso">
+                    <option>Todos os cursos</option>
+                    <option>Agropecuária</option>
+                    <option>Mineração</option>
+                    <option>Informática para Internet</option>
+                    <option>Administração</option>
+                </select><select class="select" name="situacao">
+                    <option>Todas as situações</option>
+                    <option>Apto</option>
+                    <option>Pendente</option>
+                    <option>Incompleto</option>
+                </select><button class="btn outline">Filtrar</button></form>
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th>Turma</th>
+                            <th>Documentos</th>
+                            <th>Biblioteca</th>
+                            <th>Disciplina</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Ana Beatriz Sousa Lima</b></a>
+                                <div class="tiny muted">2022001</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>7/7</td>
+                            <td class="ok">OK</td>
+                            <td class="ok">OK</td>
+                            <td><span class="badge apto">Apto</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Bruno Henrique Alves</b></a>
+                                <div class="tiny muted">2022002</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>2/7</td>
+                            <td class="bad">1 pend.</td>
+                            <td class="bad">1 pend.</td>
+                            <td><span class="badge pendente">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Carla Eduarda Rodrigues</b></a>
+                                <div class="tiny muted">2022003</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>7/7</td>
+                            <td class="ok">OK</td>
+                            <td class="ok">OK</td>
+                            <td><span class="badge apto">Apto</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Diego Martins Pereira</b></a>
+                                <div class="tiny muted">2022004</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>1/7</td>
+                            <td class="bad">2 pend.</td>
+                            <td class="bad">1 pend.</td>
+                            <td><span class="badge pendente">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Giovana Lopes Melo</b></a>
+                                <div class="tiny muted">2022007</div>
+                            </td>
+                            <td>3º ano B</td>
+                            <td>0/7</td>
+                            <td class="ok">OK</td>
+                            <td class="bad">2 pend.</td>
+                            <td><span class="badge incompleto">Incompleto</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Isabela Ferreira Lima</b></a>
+                                <div class="tiny muted">2022012</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>3/7</td>
+                            <td class="bad">2 pend.</td>
+                            <td class="bad">3 pend.</td>
+                            <td><span class="badge pendente">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Larissa Santos Cruz</b></a>
+                                <div class="tiny muted">2022022</div>
+                            </td>
+                            <td>3º ano A</td>
+                            <td>2/7</td>
+                            <td class="bad">2 pend.</td>
+                            <td class="ok">OK</td>
+                            <td><span class="badge pendente">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td><a href="aluno-bruno.html"><b>Thiago Nascimento Reis</b></a>
+                                <div class="tiny muted">2022034</div>
+                            </td>
+                            <td>3º ano B</td>
+                            <td>0/7</td>
+                            <td class="bad">1 pend.</td>
+                            <td class="bad">2 pend.</td>
+                            <td><span class="badge incompleto">Incompleto</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
+            Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
+</body>
+
+</html>
