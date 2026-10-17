@@ -1,16 +1,12 @@
 
-- o sistema deverá ter dois tipos de usuários:
+- o sistema deverá ter um tipo de usuário:
     - servidor
-    - aluno
-
-- o sistema deverá permtir que servidores e alunos enviem documentos necessários para colação de grau de alunos:
+    
+- o sistema deverá permtir que servidores enviem e deem baixa nos documentos necessários para colação de grau de alunos:
     - rg
     - cpf
     - diploma de conclusão do ensino fundamental
     - histórico
-
-- se os documentos forem aneviados por um aluno, então os mesmo deverão ser verificados e aprovados por um servidor
-
 
 - dados dos registros:
     - aluno
@@ -23,15 +19,16 @@
         - nome
         - matricula/código
 
-    - arquivos
+    - documentos
         - aluno
+        - número
         - tipo
             - rg
             - cpf
             - diploma de conclusão do ensino fundamental
             - histórico
         - status
-            - aguardando validação/verificação
+            - pendentes
             - validado/aprovado
         - data de envio
         - data de aprovacao
