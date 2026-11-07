@@ -1,0 +1,18 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+<header class="top">
+    <div class="brand"> <img src="{% static 'img/if.png' %}" alt="" width="20" height="30">
+        <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
+    </div>
+    <nav class="nav">
+        <a {% if request.path == '/pendencias/' %} class="active" {% endif %} href="{% url 'pendencias' %}">Pendências</a>
+        <a {% if request.path == '/biblioteca/' %} class="active" {% endif %} href="{% url 'biblioteca' %}">Biblioteca</a>
+        <a {% if request.path == '/disciplina/' %} class="active" {% endif %} href="{% url 'disciplina' %}">Disciplina</a>
+        <a {% if request.path == '/cursos/' %} class="active" {% endif %} href="{% url 'cursos' %}">Cursos</a>
+    </nav>
+    <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div>
+    <a class="btn" href="{% url 'index' %}">Sair</a>
+</header>
+

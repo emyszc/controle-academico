@@ -23,7 +23,8 @@ from src.views import \
     biblioteca, \
     disciplina, \
     pendencias, \
-    turmas
+    turmas, \
+    cursos
 
 urlpatterns = [
     path('', autenticacao.login, name='index'),
@@ -34,5 +35,6 @@ urlpatterns = [
     path('disciplina/', disciplina.index, name='disciplina'),
     path('pendencias/', pendencias.index, name='pendencias'),
     path('turmas/', turmas.index, name='turmas'),
+    path('cursos/', cursos.cursos, name='cursos')
 ]
 

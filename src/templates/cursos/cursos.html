@@ -1,0 +1,34 @@
+{% extends 'compartilhado/pagina-basica.html' %}
+
+{% block conteudo_principal %}
+    <table class="table table-hover table-stripped">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Ano</th>
+                <th>Quantidade Alunos</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+                {% for turma in curso.turmas %}
+                    <tr>
+                        <td>{{ curso.nome }}</td>
+                        <td>{{ turma.nome }}</td>
+                        <td>{{ turma.alunos }}</td>
+                        <td>Excluir - Editar</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+        <tfooter>
+            <tr>
+                <th>Curso</th>
+                <th>Ano</th>
+                <th>Quantidade Alunos</th>
+                <th>Ações</th>
+            </tr>
+        </tfooter>
+    </table>
+{% endblock %} 

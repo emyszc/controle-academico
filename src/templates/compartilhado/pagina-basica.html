@@ -1,0 +1,24 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+
+    <link rel="stylesheet" href="{% static 'pendencias.css' %}">
+</head>
+
+<body>
+    {% include 'compartilhado/cabecalho.html' %}
+
+    <main class="page">
+        {% block conteudo_principal %}
+        CONTEUDO PADRAO
+        <table></table>
+        {% endblock %}
+    </main>
+
+    {% include 'compartilhado/rodape.html' %}
+</body>
