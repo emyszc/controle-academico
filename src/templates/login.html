@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Controle Acadêmico — IFPI</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+
+    <style>
+        .nav a {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid transparent;
+            color: #d1fae5;
+            padding: 0 16px
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login">
+        <div class="loginbox">
+            <div style="text-align:center">
+                <img src="static/img/logoIFcapau.png" alt="Logo do Site" width="150" height="170">
+                <br>
+                <img src="static/img/imagemcadeado.png" alt="" width="90" height="90">
+                <h2>Controle Acadêmico</h2>
+                <p class="subtitle">Sistema de Colação de Grau · Acesso restrito a servidores</p>
+            </div>
+            <form class="card login-card" method="get" action="{% url 'pendencias' %}">
+                <div class="field">
+                    <label for="login">Login / Matrícula SUAP</label>
+                    <input id="login" name="login" class="input" value="servidor.academico">
+
+                    <span id="erro-login" style="display: none;">Login Inválido</span> <!-- REMOVE ISSO AQUI -->
+                </div>
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <div class="input-group">
+                        <input id="senha" name="senha" class="form-control" type="password" value="ifpi@2025">
+                        <div class="input-group-text">
+                            <a href="#" type="button" onclick="mostrarSenha()">
+                                <i id="icone-mostrar-exibir-senha" class="bi bi-eye-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn green" style="width:100%" type="submit">Entrar</button>
+
+            </form>
+        </div>
+    </main>
+
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

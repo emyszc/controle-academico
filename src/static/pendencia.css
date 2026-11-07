@@ -1,0 +1,160 @@
+.pend-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* cards de resumo */
+.resumo {
+    display: flex;
+    gap: 10px;
+}
+
+.resumo-card {
+    min-width: 84px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.resumo-card b {
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.resumo-card span {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.resumo-card.s-apto {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #047857;
+}
+
+.resumo-card.s-pendente {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #b45309;
+}
+
+.resumo-card.s-incompleto {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+}
+
+/* filtros */
+.pend-filtros {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.pend-filtros .input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* tabela */
+.pend-tabela .c {
+    text-align: center;
+}
+
+.pend-tabela .mat {
+    font-family: monospace;
+    color: #6b7280;
+}
+
+.pend-tabela .linha:hover {
+    background: #f0fdf4;
+}
+
+.pend-tabela .ok,
+.pend-tabela .bad {
+    font-weight: 700;
+}
+
+.grupo-head {
+    background: #f3f4f6;
+    cursor: pointer;
+    user-select: none;
+}
+
+.grupo-head .seta {
+    display: inline-block;
+    width: 16px;
+    transition: transform .15s;
+}
+
+.grupo-qtd {
+    float: right;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.grupo.fechado .linha {
+    display: none;
+}
+
+.grupo.fechado .seta {
+    transform: rotate(-90deg);
+}
+
+.docs {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.docs.s-apto {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.docs.s-pendente {
+    background: #fffbeb;
+    color: #b45309;
+}
+
+.docs.s-incompleto {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.vazio {
+    text-align: center;
+    padding: 32px;
+    color: #6b7280;
+}
+
+.pend-rodape {
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* celular */
+@media (max-width: 700px) {
+    .resumo {
+        width: 100%;
+    }
+
+    .resumo-card {
+        flex: 1;
+    }
+
+    .card {
+        overflow-x: auto;
+    }
+}

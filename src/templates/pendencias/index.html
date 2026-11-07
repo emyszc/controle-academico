@@ -7,135 +7,118 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Controle Acadêmico — IFPI</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'pendencias.css' %}">
 </head>
 
 <body>
     <header class="top">
-        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="brand"> <img src="{% static 'img/if.png' %}" alt="" width="20" height="30">
             <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
         </div>
-        <nav class="nav"><a class="active" href="{% url 'pendencias' %}">Pendências</a><a class=""
-                href="{% url 'biblioteca' %}">Biblioteca <span class="count">4</span></a><a class=""
-                href="{% url 'disciplina' %}">Disciplina <span class="count">6</span></a><a class="" href="{% url 'turmas' %}">Turmas
-                e Alunos</a></nav>
-        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
-            href="{% url 'index' %}">Sair</a>
+        <nav class="nav">
+            <a class="active" href="{% url 'pendencias' %}">Pendências</a>
+            <a href="{% url 'biblioteca' %}">Biblioteca</a>
+            <a href="{% url 'disciplina' %}">Disciplina</a>
+        </nav>
+        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div>
+        <a class="btn" href="{% url 'index' %}">Sair</a>
     </header>
+
     <main class="page">
         <div class="wrap">
-            <h1 class="title">Pendências para Colação de Grau</h1>
-            <p class="subtitle">Acompanhe documentos e pendências dos alunos concluintes.</p>
-            <form class="toolbar" method="get"><input class="input" name="q"
-                    placeholder="Buscar aluno ou matrícula"><select class="select" name="curso">
-                    <option>Todos os cursos</option>
-                    <option>Agropecuária</option>
-                    <option>Mineração</option>
-                    <option>Informática para Internet</option>
-                    <option>Administração</option>
-                </select><select class="select" name="situacao">
-                    <option>Todas as situações</option>
-                    <option>Apto</option>
-                    <option>Pendente</option>
-                    <option>Incompleto</option>
-                </select><button class="btn outline">Filtrar</button></form>
+
+            <div class="pend-head">
+                <div>
+                    <h1 class="title">Pendências — Documentos de Conclusão</h1>
+                    <p class="subtitle">Acompanhe a situação de todos os alunos por turma e identifique pendências.</p>
+                </div>
+                <div class="resumo">
+                    <div class="resumo-card s-apto"><b>{{ resumo.apto }}</b><span>Aptos</span></div>
+                    <div class="resumo-card s-pendente"><b>{{ resumo.pendente }}</b><span>Pendentes</span></div>
+                    <div class="resumo-card s-incompleto"><b>{{ resumo.incompleto }}</b><span>Incompletos</span></div>
+                </div>
+            </div>
+
+            <form class="pend-filtros" method="get">
+                <select class="select" name="curso" onchange="this.form.submit()">
+                    <option value="">Todos os cursos</option>
+                    {% for o in opcoes_cursos %}
+                    <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.valor }}</option>
+                    {% endfor %}
+                </select>
+
+                <select class="select" name="turma" onchange="this.form.submit()">
+                    <option value="">Todas as turmas</option>
+                    {% for o in opcoes_turmas %}
+                    <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.valor }}</option>
+                    {% endfor %}
+                </select>
+
+                <select class="select" name="situacao" onchange="this.form.submit()">
+                    <option value="">Todas as situações</option>
+                    {% for o in opcoes_situacao %}
+                    <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <input class="input" name="busca" value="{{ busca }}" placeholder="Nome ou matrícula...">
+                <button class="btn outline" type="submit">Filtrar</button>
+                <a class="btn outline" href="{% url 'pendencias' %}">Limpar</a>
+            </form>
+
             <div class="card">
-                <table class="table">
+                <table class="table pend-tabela">
                     <thead>
                         <tr>
-                            <th>Aluno</th>
-                            <th>Turma</th>
-                            <th>Documentos</th>
-                            <th>Biblioteca</th>
-                            <th>Disciplina</th>
-                            <th>Situação</th>
+                            <th>Matrícula</th>
+                            <th>Nome</th>
+                            <th class="c">Docs</th>
+                            <th class="c">Bib.</th>
+                            <th class="c">Dis.</th>
+                            <th class="c">Status</th>
                         </tr>
                     </thead>
+
+                    {% for g in grupos %}
+                    <tbody class="grupo">
+                        <tr class="grupo-head" onclick="this.parentElement.classList.toggle('fechado')">
+                            <td colspan="6">
+                                <span class="seta">▾</span>
+                                <b>{{ g.curso }}</b> <span class="muted">— {{ g.turma }}</span>
+                                <span class="grupo-qtd">{{ g.alunos|length }} aluno{{ g.alunos|length|pluralize
+                                    }}</span>
+                            </td>
+                        </tr>
+
+                        {% for a in g.alunos %}
+                        <tr class="linha">
+                            <td class="mat">{{ a.matricula }}</td>
+                            <td><b>{{ a.nome }}</b></td>
+                            <td class="c"><span class="docs s-{{ a.situacao }}">{{ a.docs }}/{{ a.docs_total }}</span>
+                            </td>
+                            <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span
+                                    class="bad">✗</span>{% endif %}</td>
+                            <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span
+                                    class="bad">✗</span>{% endif %}</td>
+                            <td class="c"><span class="badge {{ a.situacao }}">{{ a.situacao|capfirst }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    {% empty %}
                     <tbody>
                         <tr>
-                            <td><a href="aluno-bruno.html"><b>Ana Beatriz Sousa Lima</b></a>
-                                <div class="tiny muted">2022001</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>7/7</td>
-                            <td class="ok">OK</td>
-                            <td class="ok">OK</td>
-                            <td><span class="badge apto">Apto</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Bruno Henrique Alves</b></a>
-                                <div class="tiny muted">2022002</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>2/7</td>
-                            <td class="bad">1 pend.</td>
-                            <td class="bad">1 pend.</td>
-                            <td><span class="badge pendente">Pendente</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Carla Eduarda Rodrigues</b></a>
-                                <div class="tiny muted">2022003</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>7/7</td>
-                            <td class="ok">OK</td>
-                            <td class="ok">OK</td>
-                            <td><span class="badge apto">Apto</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Diego Martins Pereira</b></a>
-                                <div class="tiny muted">2022004</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>1/7</td>
-                            <td class="bad">2 pend.</td>
-                            <td class="bad">1 pend.</td>
-                            <td><span class="badge pendente">Pendente</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Giovana Lopes Melo</b></a>
-                                <div class="tiny muted">2022007</div>
-                            </td>
-                            <td>3º ano B</td>
-                            <td>0/7</td>
-                            <td class="ok">OK</td>
-                            <td class="bad">2 pend.</td>
-                            <td><span class="badge incompleto">Incompleto</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Isabela Ferreira Lima</b></a>
-                                <div class="tiny muted">2022012</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>3/7</td>
-                            <td class="bad">2 pend.</td>
-                            <td class="bad">3 pend.</td>
-                            <td><span class="badge pendente">Pendente</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Larissa Santos Cruz</b></a>
-                                <div class="tiny muted">2022022</div>
-                            </td>
-                            <td>3º ano A</td>
-                            <td>2/7</td>
-                            <td class="bad">2 pend.</td>
-                            <td class="ok">OK</td>
-                            <td><span class="badge pendente">Pendente</span></td>
-                        </tr>
-                        <tr>
-                            <td><a href="aluno-bruno.html"><b>Thiago Nascimento Reis</b></a>
-                                <div class="tiny muted">2022034</div>
-                            </td>
-                            <td>3º ano B</td>
-                            <td>0/7</td>
-                            <td class="bad">1 pend.</td>
-                            <td class="bad">2 pend.</td>
-                            <td><span class="badge incompleto">Incompleto</span></td>
+                            <td colspan="6" class="vazio">Nenhum aluno encontrado com esses filtros.</td>
                         </tr>
                     </tbody>
+                    {% endfor %}
                 </table>
+
+                <div class="pend-rodape">{{ total_exibidos }} aluno{{ total_exibidos|pluralize }} exibido{{
+                    total_exibidos|pluralize }}</div>
             </div>
         </div>
     </main>
+
     <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
             Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
 </body>
