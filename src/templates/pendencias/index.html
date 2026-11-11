@@ -75,8 +75,10 @@
                 <td><b>{{ a.nome }}</b></td>
                 <td class="c"><span class="docs s-{{ a.situacao }}">{{ a.docs }}/{{ a.docs_total }}</span>
                 </td>
-                <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
-                <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
+                <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif
+                    %}</td>
+                <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif
+                    %}</td>
                 <td class="c"><span class="badge {{ a.situacao }}">{{ a.situacao|capfirst }}</span></td>
             </tr>
             {% endfor %}
@@ -91,7 +93,8 @@
 
         <tfoot>
             <tr>
-                <td colspan="6" class="muted">{{ total_exibidos }} aluno{{ total_exibidos|pluralize }}exibido{{total_exibidos|pluralize }}</td>
+                <td colspan="6" class="muted">{{ total_exibidos }} aluno{{ total_exibidos|pluralize
+                    }}exibido{{total_exibidos|pluralize }}</td>
             </tr>
         </tfoot>
     </table>
