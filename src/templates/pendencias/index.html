@@ -3,98 +3,97 @@
 {% load static %}
 
 {% block conteudo_principal %}
-    <link rel="stylesheet" href="{% static 'pendencias.css' %}">
-
-    <div class="wrap">
-
-        <div class="pend-head">
-            <div>
-                <h1 class="title">Pendências — Documentos de Conclusão</h1>
-                <p class="subtitle">Acompanhe a situação de todos os alunos por turma e identifique pendências.</p>
-            </div>
-            <div class="resumo">
-                <div class="resumo-card s-apto"><b>{{ resumo.apto }}</b><span>Aptos</span></div>
-                <div class="resumo-card s-pendente"><b>{{ resumo.pendente }}</b><span>Pendentes</span></div>
-                <div class="resumo-card s-incompleto"><b>{{ resumo.incompleto }}</b><span>Incompletos</span></div>
-            </div>
+<div class="container d-flex flex-column gap-2 mt-5">
+    <div class="d-flex flex-column gap-2">
+        <div>
+            <h1 class="title">Pendências — Documentos de Conclusão</h1>
+            <p class="subtitle">Acompanhe a situação de todos os alunos por turma e identifique pendências.</p>
         </div>
+        <div class="d-flex gap-5">
+            <div class="d-flex gap-2"><b>{{ resumo.apto }}</b><span>Aptos</span></div>
+            <div class="d-flex gap-2"><b>{{ resumo.pendente }}</b><span>Pendentes</span></div>
+            <div class="d-flex gap-2"><b>{{ resumo.incompleto }}</b><span>Incompletos</span></div>
+        </div>
+    </div>
 
-        <form class="pend-filtros" method="get">
-            <select class="select" name="curso" onchange="this.form.submit()">
+    <form class="mt-3">
+        <div class="d-flex">
+            <select class="form-select" name="curso" onchange="this.form.submit()">
                 <option value="">Todos os cursos</option>
                 {% for o in opcoes_cursos %}
                 <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.valor }}</option>
                 {% endfor %}
             </select>
 
-            <select class="select" name="turma" onchange="this.form.submit()">
+            <select class="form-select" name="turma" onchange="this.form.submit()">
                 <option value="">Todas as turmas</option>
                 {% for o in opcoes_turmas %}
                 <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.valor }}</option>
                 {% endfor %}
             </select>
 
-            <select class="select" name="situacao" onchange="this.form.submit()">
+            <select class="form-select" name="situacao" onchange="this.form.submit()">
                 <option value="">Todas as situações</option>
                 {% for o in opcoes_situacao %}
                 <option value="{{ o.valor }}" {% if o.sel %}selected{% endif %}>{{ o.nome }}</option>
                 {% endfor %}
             </select>
 
-            <input class="input" name="busca" value="{{ busca }}" placeholder="Nome ou matrícula...">
-            <button class="btn outline" type="submit">Filtrar</button>
-            <a class="btn outline" href="{% url 'pendencias' %}">Limpar</a>
-        </form>
-
-        <div class="card">
-            <table class="table pend-tabela">
-                <thead>
-                    <tr>
-                        <th>Matrícula</th>
-                        <th>Nome</th>
-                        <th class="c">Docs</th>
-                        <th class="c">Bib.</th>
-                        <th class="c">Dis.</th>
-                        <th class="c">Status</th>
-                    </tr>
-                </thead>
-
-                {% for g in grupos %}
-                <tbody class="grupo">
-                    <tr class="grupo-head" onclick="this.parentElement.classList.toggle('fechado')">
-                        <td colspan="6">
-                            <span class="seta">▾</span>
-                            <b>{{ g.curso }}</b> <span class="muted">— {{ g.turma }}</span>
-                            <span class="grupo-qtd">{{ g.alunos|length }} aluno{{ g.alunos|length|pluralize
-                                }}</span>
-                        </td>
-                    </tr>
-
-                    {% for a in g.alunos %}
-                    <tr class="linha">
-                        <td class="mat">{{ a.matricula }}</td>
-                        <td><b>{{ a.nome }}</b></td>
-                        <td class="c"><span class="docs s-{{ a.situacao }}">{{ a.docs }}/{{ a.docs_total }}</span>
-                        </td>
-                        <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span
-                                class="bad">✗</span>{% endif %}</td>
-                        <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span
-                                class="bad">✗</span>{% endif %}</td>
-                        <td class="c"><span class="badge {{ a.situacao }}">{{ a.situacao|capfirst }}</span></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-                {% empty %}
-                <tbody>
-                    <tr>
-                        <td colspan="6" class="vazio">Nenhum aluno encontrado com esses filtros.</td>
-                    </tr>
-                </tbody>
-                {% endfor %}
-            </table>
-
-            <div class="pend-rodape">{{ total_exibidos }} aluno{{ total_exibidos|pluralize }} exibido{{
-                total_exibidos|pluralize }}</div>
+            <input class="form-control" name="busca" value="{{ busca }}" placeholder="Nome ou matrícula...">
+            <button class="btn btn-outline-success d-flex gap-2" type="submit"><i class="bi bi-funnel"></i>
+                Filtrar</button>
+            <a class="btn btn-outline-secondary d-flex gap-2" href="{% url 'pendencias' %}"><i class="bi bi-trash3"></i>
+                Limpar</a>
         </div>
-    </div>
+    </form>
+
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nome</th>
+                <th>Docs</th>
+                <th>Bib.</th>
+                <th>Dis.</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        {% for g in grupos %}
+        <tbody class="grupo">
+            <tr class="grupo-head" onclick="this.parentElement.classList.toggle('fechado')">
+                <td colspan="6">
+                    <span class="seta">▾</span>
+                    <b>{{ g.curso }}</b> <span class="muted">— {{ g.turma }}</span>
+                    <span class="grupo-qtd">{{ g.alunos|length }} aluno{{ g.alunos|length|pluralize}}</span>
+                </td>
+            </tr>
+
+            {% for a in g.alunos %}
+            <tr class="linha">
+                <td class="mat">{{ a.matricula }}</td>
+                <td><b>{{ a.nome }}</b></td>
+                <td class="c"><span class="docs s-{{ a.situacao }}">{{ a.docs }}/{{ a.docs_total }}</span>
+                </td>
+                <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
+                <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
+                <td class="c"><span class="badge {{ a.situacao }}">{{ a.situacao|capfirst }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% empty %}
+        <tbody>
+            <tr>
+                <td colspan="6" class="vazio">Nenhum aluno encontrado com esses filtros.</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+
+        <tfoot>
+            <tr>
+                <td colspan="6" class="muted">{{ total_exibidos }} aluno{{ total_exibidos|pluralize }}exibido{{total_exibidos|pluralize }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 {% endblock %}
