@@ -6,7 +6,7 @@ TURMAS = ['A', 'B', 'Turma Única']
 
 CURSOS = [
     {
-        'nome': 'Agropecuária',
+        'nome': 'Técnico em Agropecuária',
         'turmas': [
             {'nome': '3º ANO A', 'alunos': 6},
             {'nome': '3º ANO B', 'alunos': 2},
@@ -14,7 +14,7 @@ CURSOS = [
         'alunos': 8,
     },
     {
-        'nome': 'Informática',
+        'nome': 'Técnico em Informática para Internet',
         'turmas': [
             {'nome': '3º ANO A', 'alunos': 5},
             {'nome': '3º ANO B', 'alunos': 4},
@@ -22,7 +22,7 @@ CURSOS = [
         'alunos': 9,
     },
     {
-        'nome': 'Administração',
+        'nome': 'Técnico em Administração',
         'turmas': [
             {'nome': '3º ANO A', 'alunos': 7},
             {'nome': '3º ANO B', 'alunos': 3},
@@ -39,3 +39,7 @@ def cursos (request):
     }
 
     return render (request, 'cursos/cursos.html', contexto)
+
+def login(request):
+    print(f'Dados recebidos: {request.GET}')
+    return render (request, 'cursos/cursos.html')
