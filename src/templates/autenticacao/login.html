@@ -35,14 +35,14 @@
             <form class="card login-card" method="get" action="{% url 'pendencias' %}">
                 <div class="field">
                     <label for="login">Login / Matrícula SUAP</label>
-                    <input id="login" name="login" class="input" value="servidor.academico">
+                    <input id="login" name="login" class="input" value="servidor.academico" required>
 
                     <span id="erro-login" style="display: none;">Login Inválido</span> <!-- REMOVE ISSO AQUI -->
                 </div>
                 <div class="field">
                     <label for="senha">Senha</label>
                     <div class="input-group">
-                        <input id="senha" name="senha" class="form-control" type="password" value="ifpi@2025">
+                        <input id="senha" name="senha" class="form-control" type="password" value="ifpi@2025" minlength="8" required>
                         <div class="input-group-text">
                             <a href="#" type="button" onclick="mostrarSenha()">
                                 <i id="icone-mostrar-exibir-senha" class="bi bi-eye-fill"></i>
