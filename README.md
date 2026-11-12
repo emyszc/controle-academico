@@ -19,8 +19,7 @@
     - Marco 1: ambiente configurado
     - marco 2 - requisitos, arquitetura e protótipo
     
-
-  -**Progamação Avançada para web**
-    -marco 1: Ambiente de Desenvolvimento e Repositório do Projeto Integrador
-    -Entrega 1 **Entrega atual**: Formulários de Login, Cadastro de Turma e Busca de Alunos
+  - **Progamação Avançada para web**
+    - marco 1: Ambiente de Desenvolvimento e Repositório do Projeto Integrador
+    - **Entrega atual**: Formulários de Login, Cadastro de Turma e Busca de Alunos
      
