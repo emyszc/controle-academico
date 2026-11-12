@@ -1,5 +1,5 @@
 # controle-academico
-1. Nome: "Controle Academico IFPI"
+1. Nome: "Portal Acadêmico"
 2. Setor de controle acadêmico
   2.1 Confere os documentos dos alunos para a conclusão do ensino médio
 3. Nome dos integrantres:
@@ -14,4 +14,13 @@
   - Django
   - MySQL
 5. Status atual do projeto:
-  - Em desenvolvimento — Marco 1: ambiente configurado
+  - **engenharia de Software**
+    - Em desenvolvimento
+    - Marco 1: ambiente configurado
+    - marco 2 - requisitos, arquitetura e protótipo
+    
+
+  -**Progamação Avançada para web**
+    -marco 1: Ambiente de Desenvolvimento e Repositório do Projeto Integrador
+    -Entrega 1 **Entrega atual**: Formulários de Login, Cadastro de Turma e Busca de Alunos
+     
