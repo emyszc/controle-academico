@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from src.models import Curso, Turma, CursoTurma
+from django.contrib import messages
+from src.models import Curso, Turma
+from src.forms import CursoTurmaForm
 
 ANOS = [1, 2, 3]
 
@@ -47,7 +49,19 @@ def cursos(request):
         curso_id = request.POST.get('curso')
         ano = request.POST.get('ano')
 
-        CursoTurma.objects.create(turma_id=turma_id, curso_id=curso_id)
+        form = CursoTurmaForm({
+            'turma': turma_id,
+            'curso': curso_id,
+            'ano': ano
+        })
+
+        if form.is_valid():
+            messages.success(request, 'Cadastro realizado com sucesso!')
+            form.save()
+        else:
+            for errors in form.errors.values():
+                for error in errors:
+                    messages.error(request, error)
 
         return render (request, 'cursos/cursos.html', contexto)
 

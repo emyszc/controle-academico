@@ -8,6 +8,8 @@
         </button>
     </div>
 
+    {% include 'compartilhado/mensagens.html' %}
+
     <div class="modal fade" id="modal-cadastrar-turma" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -77,11 +79,11 @@
         </thead>
         <tbody>
             {% for curso in cursos %}
-                {% for turma in curso.turmas %}
+                {% for curso_turma in curso.curso_turmas %}
                     <tr>
                         <td>{{ curso.nome }}</td>
-                        <td>{{ turma.nome }}</td>
-                        <td>{{ turma.alunos }}</td>
+                        <td>{{ curso_turma.ano }}º - Turma {{ curso_turma.turma.nome }}</td>
+                        <td>{{ curso_turma.alunos }}</td>
                         <td>Excluir - Editar</td>
                     </tr>
                 {% endfor %}

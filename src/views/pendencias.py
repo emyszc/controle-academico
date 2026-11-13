@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 
 ALUNOS = [
     {'matricula': '2022001', 'nome': 'Ana Beatriz Sousa Lima',  'curso': 'Agropecuária', 'turma': '3º ano A', 'docs': 7, 'biblioteca': True,  'disciplina': True},
