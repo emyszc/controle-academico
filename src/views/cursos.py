@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from src.models import Curso, Turma, CursoTurma
 
-ANOS = ['1º ANO', '2º ANO', '3º ANO']
+ANOS = [1, 2, 3]
 
 TURMAS = ['A', 'B', 'Turma Única']
 
@@ -31,14 +32,24 @@ CURSOS = [
     },
 ]
 
-def cursos (request):
+def cursos(request):
     contexto = {
-        'cursos': CURSOS,
+        'cursos': Curso.objects.all(),
         'anos': ANOS,
-        'turmas': TURMAS,
+        'turmas': Turma.objects.all(),
     }
 
-    return render (request, 'cursos/cursos.html', contexto)
+    if request.method == 'GET':
+        return render (request, 'cursos/cursos.html', contexto)
+
+    if request.method == 'POST':
+        turma_id = request.POST.get('turma')
+        curso_id = request.POST.get('curso')
+        ano = request.POST.get('ano')
+
+        CursoTurma.objects.create(turma_id=turma_id, curso_id=curso_id)
+
+        return render (request, 'cursos/cursos.html', contexto)
 
 def login(request):
     print(f'Dados recebidos: {request.GET}')
