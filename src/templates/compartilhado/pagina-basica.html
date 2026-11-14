@@ -12,12 +12,13 @@
 
 
     <link rel="stylesheet" href="{% static 'pendencias.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/font.css' %}">
 </head>
 
 <body>
     {% include 'compartilhado/cabecalho.html' %}
 
-    <main class="page">
+    <main class="page container mt-5">
         {% block conteudo_principal %}
         CONTEUDO PADRAO
         <table></table>

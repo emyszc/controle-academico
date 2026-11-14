@@ -1,14 +1,117 @@
 {% extends 'compartilhado/pagina-basica.html' %}
 
+{% load static %}
+
 {% block conteudo_principal %}
-<div class="d-flex flex-column mt-2 mx-2 gap-2">
-    <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-success rounded-0" data-bs-toggle="modal" data-bs-target="#modal-cadastrar-turma">
-            <i class="bi bi-plus-circle"></i> Cadastrar Turma
-        </button>
+<div class="d-flex flex-column mx-2 gap-2">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <img src="{% static 'img/logos/cursos/cursos.svg' %}" width="80"/>
+
+            <div class="d-flex flex-column">
+                <h2>Cursos</h2>
+                <h6>Consulte os cursos cadastrados e gerencie suas turmas</h6>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-center">
+            <button type="button" class="btn btn-success rounded-0" data-bs-toggle="modal" data-bs-target="#modal-cadastrar-turma">
+                <i class="bi bi-plus-circle"></i> Cadastrar Turma
+            </button>
+        </div>
     </div>
 
     {% include 'compartilhado/mensagens.html' %}
+
+    <div class="container">
+        <div class="row my-5">
+            <div class="col d-flex justify-content-center">
+                <div class="card align-self-center" style="width: 400px">
+                    <div class="card-body">
+                        <div class="d-flex gap-2" style="width: 200px">
+                            <img src="{% static 'img/logos/cursos/agropecuaria.svg' %}" width="100"/>
+
+                            <div class="d-flex flex-column justify-content-around">
+                                <span class="card-titulo">Técnico em Agropecuária</span>
+
+                                <div class="d-flex gap-2">
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                </div>
+
+                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 400px">
+                    <div class="card-body">
+                        <div class="d-flex gap-2" style="width: 200px">
+                            <img src="{% static 'img/logos/cursos/mineracao.svg' %}" width="100"/>
+
+                            <div class="d-flex flex-column justify-content-around">
+                                <span class="card-titulo">Técnico em Mineração</span>
+
+                                <div class="d-flex gap-2">
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                </div>
+
+                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 400px">
+                    <div class="card-body" style="width: 400px;">
+                        <div class="d-flex gap-2" style="width: 200px">
+                            <img src="{% static 'img/logos/cursos/informatica.svg' %}" width="100"/>
+
+                            <div class="d-flex flex-column justify-content-around">
+                                <span class="card-titulo">Técnico em Informática</span>
+
+                                <div class="d-flex gap-2">
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                </div>
+
+                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 400px">
+                    <div class="card-body" style="width: 400px;">
+                        <div class="d-flex gap-2" style="width: 200px">
+                            <img src="{% static 'img/logos/cursos/administracao.svg' %}" width="100"/>
+
+                            <div class="d-flex flex-column justify-content-around">
+                                <span class="card-titulo">Técnico em Administração</span>
+
+                                <div class="d-flex gap-2">
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                </div>
+
+                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="modal-cadastrar-turma" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -67,36 +170,5 @@
             </div>
         </div>
     </div>
-
-    <table class="table table-hover table-stripped">
-        <thead>
-            <tr>
-                <th>Curso</th>
-                <th>Ano</th>
-                <th>Quantidade Alunos</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for curso in cursos %}
-                {% for curso_turma in curso.curso_turmas %}
-                    <tr>
-                        <td>{{ curso.nome }}</td>
-                        <td>{{ curso_turma.ano }}º - Turma {{ curso_turma.turma.nome }}</td>
-                        <td>{{ curso_turma.alunos }}</td>
-                        <td>Excluir - Editar</td>
-                    </tr>
-                {% endfor %}
-            {% endfor %}
-        </tbody>
-        <tfooter>
-            <tr>
-                <th>Curso</th>
-                <th>Ano</th>
-                <th>Quantidade Alunos</th>
-                <th>Ações</th>
-            </tr>
-        </tfooter>
-    </table>
 </div>
 {% endblock %}

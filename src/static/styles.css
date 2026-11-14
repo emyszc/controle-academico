@@ -89,7 +89,7 @@ select {
 }
 
 .page {
-  min-height: calc(100vh - 90px)
+  min-height: calc(100vh - 138px)
 }
 
 .wrap {

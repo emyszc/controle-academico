@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 220" role="img" aria-labelledby="title desc">
+  <title id="title">Chapéu de formando</title>
+  <desc id="desc">Ícone verde de capelo de formatura, com topo em losango, base arredondada e pingente lateral.</desc>
+  <g fill="#087B4B">
+    <!-- Parte superior do capelo -->
+    <path d="M8 76 128 18 248 76 128 132Z"/>
+    <!-- Corpo do capelo -->
+    <path d="M55 104 128 139 201 104 201 154
+             C201 174 169 194 128 194
+             C87 194 55 174 55 154Z"/>
+    <!-- Ponta superior do corpo, atrás do acabamento branco -->
+    <path d="M55 104 128 139 201 104 201 122 128 158 55 122Z"/>
+    <!-- Cordão e pingente -->
+    <path d="M226 82 235 78 235 145
+             C235 153 230 159 223 159
+             C216 159 211 153 211 145
+             L211 118Z"/>
+  </g>
+  <!-- Linha clara que separa a aba superior do corpo -->
+  <path d="M59 103 128 137 197 103"
+        fill="none" stroke="#FFFFFF" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

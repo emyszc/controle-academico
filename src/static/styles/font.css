@@ -1,0 +1,207 @@
+/* =====================================
+   FONTE PRINCIPAL
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif !important;
+}
+
+
+/* =====================================
+   CABEÇALHO E MENU
+===================================== */
+
+/* Nome do Instituto Federal */
+.logo-texto {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Identificação do campus */
+.logo-subtitulo {
+    font-size: 8px;
+    font-weight: 400;
+}
+
+/* Opções do menu */
+.menu a {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Nome do servidor */
+.usuario-nome {
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+/* =====================================
+   TÍTULOS DAS PÁGINAS
+===================================== */
+
+/* Título principal */
+.titulo-pagina {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Descrição abaixo do título */
+.descricao-pagina {
+    font-size: 11px;
+    font-weight: 400;
+    color: #64748b;
+}
+
+
+/* =====================================
+   CARDS DOS CURSOS
+===================================== */
+
+/* Nome do curso */
+.card-titulo {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Quantidade de turmas */
+.card-descricao {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* Link para visualizar turmas */
+.card-link {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =====================================
+   BOTÕES
+===================================== */
+
+/* Botões principais */
+.btn-principal {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Botões secundários */
+.btn-secundario {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+/* =====================================
+   FORMULÁRIOS
+===================================== */
+
+/* Títulos das seções */
+.form-titulo {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Identificação dos campos */
+.form-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Texto digitado */
+.form-input {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* Texto de orientação */
+.form-input::placeholder {
+    font-size: 11px;
+    font-weight: 400;
+    color: #94a3b8;
+}
+
+
+/* =====================================
+   TABELAS
+===================================== */
+
+/* Cabeçalho da tabela */
+.tabela th {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Informações da tabela */
+.tabela td {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+/* Nome dos alunos */
+.aluno-nome {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Situação do aluno */
+.status {
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* =====================================
+   DETALHES DO ALUNO
+===================================== */
+
+/* Título do painel */
+.painel-titulo {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Nome do aluno */
+.perfil-nome {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Informações pessoais */
+.perfil-informacao {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+/* Nome dos documentos */
+.documento-titulo {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Situação dos documentos */
+.documento-status {
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+/* =====================================
+   RODAPÉ
+===================================== */
+
+/* Informações institucionais */
+.rodape-texto {
+    font-size: 8px;
+    font-weight: 400;
+}
+
+/* Links do rodapé */
+.rodape a {
+    font-size: 8px;
+    font-weight: 500;
+}
