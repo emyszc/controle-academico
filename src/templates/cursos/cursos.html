@@ -171,4 +171,21 @@
         </div>
     </div>
 </div>
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="campo-documentos">
+        <label><strong>{{ form.documentos.label }}:</strong></label>
+        {{ form.doccumentos }}
+    </div>
+
+    <br>
+    <div class="campo-declaracao">
+        {{ form.declaracao}}
+        {{ form.declaracao.label_tag}}
+    </div>
+
+    <br>
+    <button type="submit">Enviar Documentos</button>
+</form>    
 {% endblock %}
