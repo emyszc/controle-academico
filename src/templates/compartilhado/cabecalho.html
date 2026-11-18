@@ -7,7 +7,7 @@
         <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
     </div>
     <nav class="nav">
-        <a {% if request.path == '/pendencias/' %} class="active" {% endif %} href="{% url 'pendencias' %}">Pendências</a>
+        <a {% if request.path == '/pendencias/' %} class="active" {% endif %} href="{% url 'pendencias' %}">Documentos</a>
         <a {% if request.path == '/biblioteca/' %} class="active" {% endif %} href="{% url 'biblioteca' %}">Biblioteca</a>
         <a {% if request.path == '/disciplina/' %} class="active" {% endif %} href="{% url 'disciplina' %}">Disciplina</a>
         <a {% if request.path == '/cursos/' %} class="active" {% endif %} href="{% url 'cursos' %}">Cursos</a>
