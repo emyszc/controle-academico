@@ -1,7 +1,10 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def aluno(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     return render(request, 'alunos/aluno.html')
 

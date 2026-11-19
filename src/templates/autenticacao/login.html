@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    {% include 'compartilhado/mensagens.html' %}
     <main class="login">
         <div class="loginbox">
             <div style="text-align:center">
@@ -32,7 +33,8 @@
                 <h2>Controle Acadêmico</h2>
                 <p class="subtitle">Sistema de Colação de Grau · Acesso restrito a servidores</p>
             </div>
-            <form class="card login-card" method="get" action="{% url 'pendencias' %}">
+            <form class="card login-card" method="post" action="/login/">
+                {% csrf_token %}
                 <div class="field">
                     <label for="login">Login / Matrícula SUAP</label>
                     <input id="login" name="login" class="input" value="servidor.academico" required>

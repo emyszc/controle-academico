@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from src.models import Curso, Turma
 from src.forms import CursoTurmaForm
@@ -35,6 +35,9 @@ CURSOS = [
 ]
 
 def cursos(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     contexto = {
         'cursos': Curso.objects.all(),
         'anos': ANOS,

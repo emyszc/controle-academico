@@ -14,12 +14,12 @@ from django.views.decorators.http import require_POST
 def login(request):
 
     if request.user.is_authenticated:
-        return redirect('biblioteca')
+        return redirect('pendencias')
 
     if request.method == 'POST':
 
-        usuario = request.POST.get('username', '').strip()
-        senha = request.POST.get('password', '')
+        usuario = request.POST.get('login', '').strip()
+        senha = request.POST.get('senha', '')
 
         if not usuario or not senha:
             messages.error(request, 'Preencha todos os campos.')
@@ -37,7 +37,7 @@ def login(request):
 
                 messages.success(request, 'Login realizado com sucesso!')
 
-                return redirect('biblioteca')
+                return redirect('pendencias')
 
             else:
                 messages.error(
@@ -130,7 +130,6 @@ def cadastro(request):
 
 
 @never_cache
-@require_POST
 def sair(request):
 
     logout(request)
