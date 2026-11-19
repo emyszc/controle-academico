@@ -35,11 +35,11 @@
                                 <span class="card-titulo">Técnico em Agropecuária</span>
 
                                 <div class="d-flex gap-2">
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_turmas_por_curso.AGRO }} turma(s)</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_alunos_por_curso.AGRO }} aluno(s)</span>
                                 </div>
 
-                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                                <a href="{% url 'curso' 'AGRO' %}" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -56,11 +56,11 @@
                                 <span class="card-titulo">Técnico em Mineração</span>
 
                                 <div class="d-flex gap-2">
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_turmas_por_curso.MIN }} turma(s)</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_alunos_por_curso.MIN }} aluno(s)</span>
                                 </div>
 
-                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                                <a href="{% url 'curso' 'MIN' %}" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -79,11 +79,11 @@
                                 <span class="card-titulo">Técnico em Informática</span>
 
                                 <div class="d-flex gap-2">
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_turmas_por_curso.INFO }} turma(s)</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_alunos_por_curso.INFO }} aluno(s)</span>
                                 </div>
 
-                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                                <a href="{% url 'curso' 'INFO' %}" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -100,11 +100,11 @@
                                 <span class="card-titulo">Técnico em Administração</span>
 
                                 <div class="d-flex gap-2">
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 3 turmas</span>
-                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> 128 alunos</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_turmas_por_curso.ADM }} turma(s)</span>
+                                    <span class="badge text-bg-secondary"><i class="bi bi-people-fill"></i> {{ quantidade_alunos_por_curso.ADM }} aluno(s)</span>
                                 </div>
 
-                                <a href="#" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
+                                <a href="{% url 'curso' 'ADM' %}" class="card-link text-success"><i class="bi bi-people-fill"></i> Ver turmas <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
