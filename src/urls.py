@@ -29,6 +29,7 @@ from src.views import \
 urlpatterns = [
     path('', autenticacao.login, name='index'),
     path('admin/', admin.site.urls, name='admin'),
+    path('alunos/', alunos.cadastrar_aluno, name='cadastrar_aluno'),
     path('alunos/bruno/', alunos.aluno, name='aluno'),
     path('login/', autenticacao.login, name='login'),
     path('biblioteca/', biblioteca.index, name='biblioteca'),
@@ -36,6 +37,7 @@ urlpatterns = [
     path('pendencias/', pendencias.index, name='pendencias'),
     path('turmas/', turmas.index, name='turmas'),
     path('cursos/', cursos.cursos, name='cursos'),
+    path('cursos/<str:codigo>/', cursos.curso, name='curso'),
     path('cadastro/', autenticacao.cadastro, name='cadastro'),
     path('sair/', autenticacao.sair, name='sair'),
 ]

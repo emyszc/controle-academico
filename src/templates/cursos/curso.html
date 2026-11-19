@@ -1,0 +1,218 @@
+{% extends 'compartilhado/pagina-basica.html' %}
+
+{% load static %}
+{% load filtros_customizados %}
+
+{% block conteudo_principal %}
+  <div class="d-flex flex-column gap-2">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex">
+        <img src="{% static 'img/logos/cursos/cursos.svg' %}" width="80"/>
+
+        <div class="d-flex flex-column">
+          <h2>{{ curso.nome }}</h2>
+          <h6>Visualize as turmas deste curso e cadastre alunos</h6>
+        </div>
+      </div>
+
+      <div class="d-flex">
+        <div class="d-flex flex-column justify-content-center">
+          <button type="button" data-bs-toggle="modal" data-bs-target="#modal-cadastrar-aluno" class="btn btn-success rounded-0">
+            <i class="bi bi-person-add"></i> Cadastrar Aluno
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'compartilhado/mensagens.html' %}
+
+  <div class="accordion d-flex flex-column gap-2 mt-2" id="accordion-turmas">
+    {% if turmas_totais == 0 %}
+      <div class="text-center text-secondary p-4">
+        <i class="bi bi-person-slash fs-3 d-block mb-2"></i>
+
+        Nenhuma turma cadastrada nesse curso!
+      </div>
+    {% else %}
+      {% for ano in anos %}
+        {% for curso_turma in cursos_turmas_por_ano|na_posicao:ano %}
+          <div class="accordion-item turma-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button turma-header {% if not forloop.parentloop.first or not forloop.first %}collapsed{% endif %}"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#turma-{{ curso_turma.pk }}"
+                aria-expanded="{% if forloop.parentloop.first and forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="turma-{{ curso_turma.pk }}"
+              >
+                <span class="d-flex align-items-center gap-3 w-100">
+                  <span>
+                    {{ ano }}º ano - Turma {{ curso_turma.turma.nome }}
+                  </span>
+
+                  <span class="turma-count ms-auto me-3">
+                    {{ curso_turma.total_alunos }} alunos
+                  </span>
+                </span>
+              </button>
+            </h2>
+
+            <div
+              id="turma-{{ curso_turma.pk }}"
+              class="accordion-collapse collapse {% if forloop.parentloop.first and forloop.first %}show{% endif %}"
+              data-bs-parent="#accordion-turmas"
+            >
+              <div class="accordion-body p-2">
+                {% if curso_turma.alunos %}
+                  <div class="table-responsive">
+                    <table class="table turma-table">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Foto</th>
+                          <th class="text-center">Nome</th>
+                          <th class="text-center">Matrícula</th>
+                          <th class="text-center">Status</th>
+                          <th class="text-center">Ações</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {% for aluno in curso_turma.alunos %}
+                          <tr>
+                            <td class="text-center">
+                              <div class="avatar">
+                                {{ aluno.nome|first|upper }}{{ aluno.nome|last|upper }}
+                              </div>
+                            </td>
+
+                            <td>
+                              {{ aluno.nome }}
+                            </td>
+
+                            <td class="text-center">
+                              {{ aluno.matricula }}
+                            </td>
+
+                            <td class="text-center">
+                              {% if aluno.ativo %}
+                                <span class="badge rounded-pill text-bg-success">
+                                  Regular
+                                </span>
+                              {% else %}
+                                <span class="badge rounded-pill text-bg-secondary">
+                                  Inativo
+                                </span>
+                              {% endif %}
+                            </td>
+
+                            <td class="text-center">
+                              <div class="d-flex justify-content-center gap-2">
+
+                                <a
+                                  href="#"
+                                  class="btn btn-outline-secondary btn-sm"
+                                >
+                                  <i class="bi bi-eye"></i>
+                                  Visualizar
+                                </a>
+
+                                <a
+                                  href="#"
+                                  class="btn btn-outline-secondary btn-sm"
+                                >
+                                  <i class="bi bi-pencil"></i>
+                                  Editar
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                {% else %}
+                  <div class="text-center text-secondary p-4">
+                    <i class="bi bi-people fs-3 d-block mb-2"></i>
+                    Nenhum aluno cadastrado nesta turma.
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div id="modal-cadastrar-aluno" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cadastrar Aluno</h5>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form action="{% url 'cadastrar_aluno' %}" method="POST" class="d-flex flex-column gap-1">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label for="nome" class="form-label">Nome</label>
+              <input id="nome" type="text" name="nome" class="form-control" placeholder="Nome do Aluno" value="{{ form.instance.nome }}">
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input id="email" type="text" name="email" class="form-control" placeholder="Email institucional do Aluno" value="{{ form.instance.email }}">
+            </div>
+
+            <div class="form-group">
+              <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+              <input id="data_nascimento" type="date" name="data_nascimento" class="form-control" value="{{ form.instance.data_nascimento|date:'c' }}">
+            </div>
+
+            <div class="form-group">
+              <label for="curso" class="form-label">Curso</label>
+              <input id="curso" type="text" readonly="readonly" value="{{ curso.nome }}" class="form-control">
+              <input type="hidden" value="{{ curso.codigo }}" name="codigo_curso"/>
+            </div>
+
+            <div class="form-group">
+              <label for="matricula" class="form-label">Matrícula</label>
+              <input id="matricula" type="text" name="matricula" placeholder="Matrícula do Aluno" class="form-control" value="{{ form.instance.matricula }}">
+            </div>
+
+            <div class="form-group">
+              <label for="curso_turma" class="form-label">Turma</label>
+              <select id="curso_turma" name="curso_turma" class="form-select">
+                <option selected disabled>Selecione uma Turma</option>
+
+                {% for ano in anos %}
+                  <optgroup label="{{ano}}º Ano">
+                    {% for curso_turma in cursos_turmas_por_ano|na_posicao:ano %}
+                      <option value="{{ curso_turma.pk }}" {% if curso_turma == form.instance.curso_turma %}selected{% endif %}>{{ ano }}º - {{ curso_turma.turma.nome }}</option>
+                    {% empty %}
+                      <option disabled>Nenhuma turma encontrada</option>
+                    {% endfor %}
+                  </optgroup>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group mt-2">
+              <button type="submit" class="btn btn-success form-control">
+                <i class="bi bi-floppy2-fill"></i> Salvar
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,51 +1,34 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from src.models import Curso, Turma
+from src.models import Aluno, Curso, Turma
 from src.forms import CursoTurmaForm
 
-ANOS = [1, 2, 3]
 
-TURMAS = ['A', 'B', 'Turma Única']
+def contexto_basico_curso(codigo_curso):
+    contexto = {
+        'anos': [1, 2, 3]
+    }
 
-CURSOS = [
-    {
-        'nome': 'Técnico em Agropecuária',
-        'turmas': [
-            {'nome': '3º ANO A', 'alunos': 6},
-            {'nome': '3º ANO B', 'alunos': 2},
-        ],
-        'alunos': 8,
-    },
-    {
-        'nome': 'Técnico em Informática para Internet',
-        'turmas': [
-            {'nome': '3º ANO A', 'alunos': 5},
-            {'nome': '3º ANO B', 'alunos': 4},
-        ],
-        'alunos': 9,
-    },
-    {
-        'nome': 'Técnico em Administração',
-        'turmas': [
-            {'nome': '3º ANO A', 'alunos': 7},
-            {'nome': '3º ANO B', 'alunos': 3},
-        ],
-        'alunos': 10,
-    },
-]
+    if curso := Curso.objects.filter(codigo=codigo_curso).first():
+        contexto['curso'] = curso
+        contexto['cursos_turmas_por_ano'] = {}
+        contexto['turmas_totais'] = 0
+
+        for ano in contexto['anos']:
+            contexto['cursos_turmas_por_ano'][ano] = curso.cursoturma_set.filter(ano=ano).order_by('turma__nome')
+            contexto['turmas_totais'] += contexto['cursos_turmas_por_ano'][ano].count()
+
+            for curso_turma in contexto['cursos_turmas_por_ano'][ano]:
+                curso_turma.alunos = Aluno.objects.filter(curso_turma=curso_turma).order_by('nome')
+                curso_turma.total_alunos = curso_turma.alunos.count()
+
+    return contexto
+
 
 def cursos(request):
     if not request.user.is_authenticated:
         return redirect('login')
-
-    contexto = {
-        'cursos': Curso.objects.all(),
-        'anos': ANOS,
-        'turmas': Turma.objects.all(),
-    }
-
-    if request.method == 'GET':
-        return render (request, 'cursos/cursos.html', contexto)
 
     if request.method == 'POST':
         turma_id = request.POST.get('turma')
@@ -65,8 +48,30 @@ def cursos(request):
             for errors in form.errors.values():
                 for error in errors:
                     messages.error(request, error)
+    contexto = {
+        'anos': [1, 2, 3],
+        'cursos': Curso.objects.all(),
+        'turmas': Turma.objects.all(),
+        'quantidade_turmas_por_curso': {},
+        'quantidade_alunos_por_curso': {},
+    }
 
-        return render (request, 'cursos/cursos.html', contexto)
+    for curso in contexto['cursos']:
+        contexto['quantidade_turmas_por_curso'][curso.codigo] = curso.curso_turmas().count()
+        contexto['quantidade_alunos_por_curso'][curso.codigo] = curso.alunos().count()
+
+    return render (request, 'cursos/cursos.html', contexto)
+
+def curso(request, codigo):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    contexto = contexto_basico_curso(codigo)
+
+    if contexto['curso']:
+        return render(request, 'cursos/curso.html', contexto)
+
+    return HttpResponseNotFound()
 
 def login(request):
     print(f'Dados recebidos: {request.GET}')
