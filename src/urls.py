@@ -35,6 +35,8 @@ urlpatterns = [
     path('disciplina/', disciplina.index, name='disciplina'),
     path('pendencias/', pendencias.index, name='pendencias'),
     path('turmas/', turmas.index, name='turmas'),
-    path('cursos/', cursos.cursos, name='cursos')
+    path('cursos/', cursos.cursos, name='cursos'),
+    path('cadastro/', autenticacao.cadastro, name='cadastro'),
+    path('sair/', autenticacao.sair, name='sair'),
 ]
 

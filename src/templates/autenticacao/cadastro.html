@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro - Controle Acadêmico</title>
+
+</head>
+
+<body>
+
+    <h2>Criar conta</h2>
+
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Nome completo:</label>
+        <input type="text" name="nome" required>
+
+        <br><br>
+
+        <label>E-mail:</label>
+        <input type="email" name="email" required>
+
+        <br><br>
+
+        <label>Nome de usuário:</label>
+        <input type="text" name="username" required>
+
+        <br><br>
+
+        <label>Senha:</label>
+        <input type="password" name="password" required>
+
+        <br><br>
+
+        <label>Confirmar senha:</label>
+        <input type="password" name="confirmar_senha" required>
+
+        <br><br>
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <p>
+        Já possui conta?
+        <a href="{% url 'login' %}">Entrar</a>
+    </p>
+
+</body>
+</html>
