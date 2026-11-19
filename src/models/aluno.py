@@ -7,6 +7,7 @@ class Aluno(models.Model):
     data_nascimento = models.DateField(verbose_name="Data de Nascimento")
     ativo = models.BooleanField(default=True, verbose_name="Matrícula Ativa")
     criado_em = models.DateTimeField(auto_now_add=True)
+    curso_turma = models.ForeignKey('CursoTurma', models.PROTECT, null=True, blank=True)
 
     class Meta:
         verbose_name = "Aluno"
