@@ -25,13 +25,14 @@
 <body>
     {% include 'compartilhado/mensagens.html' %}
     <main class="login">
-        <div class="loginbox">
+        <div class="loginbox border rounded-5" style="background-color: rgba(255, 255, 255, 0.6); padding: 20px;">
             <div style="text-align:center">
                 <img src="{% static 'img/logoIFcapau.png' %}" alt="Logo do Site" width="140" height="195">
                 <br>
                 <img src="{% static 'img/imagemcadeado.png' %}" alt="" width="90" height="90">
                 <h2>Portal Acadêmico</h2>
-                <p class="subtitle">Sistema de Colação de Grau · Acesso restrito a servidores</p>
+                <p style="font-weight: 200;">Sistema de Colação de Grau</p>
+                <p class="subtitle" style="font-weight: 300;">Acesso restrito a servidores</p>
             </div>
             <form class="card login-card" method="post" action="/login/">
                 {% csrf_token %}
@@ -64,7 +65,7 @@
                     </div>
                 </div>
 
-                <button class="btn green" style="width:100%" type="submit">Entrar</button>
+                <button class="btn btn-outline-success" style="width:100%" type="submit"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
             </form>
         </div>
     </main>
