@@ -114,5 +114,6 @@ def index(request):
         'id_curso_selecionado': id_curso_selecionado,
         'ano_selecionado': ano_selecionado,
         'turma_selecionada': turma_selecionada,
+        'docs_total': docs_total,
     }
     return render(request, 'pendencias/index.html', contexto)
