@@ -17,3 +17,7 @@ class Aluno(models.Model):
     def __str__(self):
         return f"{self.nome} ({self.matricula})"
    
+    def foto_3x4(self):
+        if foto := self.documento_set.filter(tipo__nome='Foto 3x4').first():
+            if foto.arquivo:
+                return foto.arquivo.url
