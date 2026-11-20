@@ -124,6 +124,10 @@ select {
   min-width: 240px
 }
 
+.btn-sair:hover {
+  color: red;
+}
+
 .btn {
   display: inline-block;
   border: 0;
