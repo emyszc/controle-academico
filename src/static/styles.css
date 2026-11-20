@@ -7,7 +7,17 @@ body {
   font-family: Inter, Arial, sans-serif;
   background: #f2f4f2;
   color: #1a1a1a;
+
+  background-image: url("img/background.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #222;
 }
+
 
 a {
   color: inherit;
@@ -343,7 +353,7 @@ select {
 }
 
 .loginbox {
-  width: 360px
+  width: 360px;
 }
 
 .login-card {

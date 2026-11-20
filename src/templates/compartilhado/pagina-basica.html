@@ -18,11 +18,11 @@
 <body>
     {% include 'compartilhado/cabecalho.html' %}
 
-    <main class="page container mt-5">
-        {% block conteudo_principal %}
-        CONTEUDO PADRAO
-        <table></table>
-        {% endblock %}
+    <main class="page container" style="background-color: rgba(255, 255, 255, 0.9)">
+        <div class="mt-5">
+            {% block conteudo_principal %}
+            {% endblock %}
+        </div>
     </main>
 
     {% include 'compartilhado/rodape.html' %}

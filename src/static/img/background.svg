@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#004B40"/>
+      <stop offset="1" stop-color="#003F38"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#008D76"/>
+      <stop offset="1" stop-color="#00C5A5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Formas geomÃ©tricas -->
+  <path d="M0 275 L175 210 Q210 205 225 245 L315 480 Q330 525 285 545 L0 645Z"
+        fill="#002F2B" opacity=".65"/>
+
+  <path d="M820 0 H1320 L920 150 Q885 160 865 125Z"
+        fill="#008D76" opacity=".35"/>
+
+  <rect x="1335" y="210" width="420" height="345"
+        rx="65" stroke="url(#glow)" stroke-width="6" opacity=".8"/>
+
+  <rect x="-90" y="820" width="620" height="220"
+        rx="65" fill="#008D76" opacity=".5"
+        transform="rotate(-15 0 820)"/>
+
+  <rect x="1470" y="-80" width="220" height="180"
+        rx="35" stroke="#001F1C" stroke-width="4" opacity=".5"
+        transform="rotate(-20 1470 -80)"/>
+
+  <!-- Capelo -->
+  <g stroke="#00A88E" stroke-width="7"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity=".85">
+    <path d="M270 160 L390 140 L510 160 L395 235Z"/>
+    <path d="M300 180 L320 260 Q395 305 470 260 L485 180"/>
+    <path d="M300 180 L300 270"/>
+    <path d="M290 270 Q300 250 310 270 L310 295 Q300 310 290 295Z" fill="#00A88E"/>
+  </g>
+
+  <!-- Livro aberto -->
+  <g stroke="#00A88E" stroke-width="7"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity=".85">
+    <path d="M1185 290 Q1230 265 1285 310 L1285 405 Q1235 365 1180 385Z"/>
+    <path d="M1285 310 Q1340 270 1400 300 L1385 405 Q1335 380 1285 405Z"/>
+    <path d="M1210 310 Q1240 300 1260 325"/>
+    <path d="M1205 340 Q1240 330 1260 355"/>
+    <path d="M1310 320 Q1345 305 1370 325"/>
+    <path d="M1305 350 Q1340 335 1360 355"/>
+  </g>
+
+  <!-- Notebook -->
+  <g stroke="#00A88E" stroke-width="7"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity=".85">
+    <path d="M195 665 L330 635 L355 735 L220 765Z"/>
+    <path d="M220 765 L355 735 L410 765 L270 800Z"/>
+    <path d="M270 800 L410 765"/>
+    <path d="M250 770 L340 750"/>
+  </g>
+
+  <!-- Certificado -->
+  <g stroke="#00A88E" stroke-width="7"
+     stroke-linecap="round" stroke-linejoin="round"
+     opacity=".85">
+    <path d="M1280 650 L1380 670 L1360 765 L1260 745Z"/>
+    <path d="M1300 680 L1350 690"/>
+    <path d="M1295 710 L1345 720"/>
+    <path d="M1290 735 L1320 740"/>
+    <circle cx="1340" cy="760" r="22"/>
+    <path d="M1325 778 L1315 810 L1340 790 L1360 810 L1355 775"/>
+  </g>
+
+  <!-- Pontilhados -->
+  <g fill="#00A88E" opacity=".7">
+    <circle cx="40" cy="40" r="5"/>
+    <circle cx="70" cy="40" r="5"/>
+    <circle cx="100" cy="40" r="5"/>
+    <circle cx="130" cy="40" r="5"/>
+    <circle cx="40" cy="70" r="5"/>
+    <circle cx="70" cy="70" r="5"/>
+    <circle cx="100" cy="70" r="5"/>
+    <circle cx="130" cy="70" r="5"/>
+
+    <circle cx="1410" cy="840" r="5"/>
+    <circle cx="1440" cy="840" r="5"/>
+    <circle cx="1470" cy="840" r="5"/>
+    <circle cx="1500" cy="840" r="5"/>
+    <circle cx="1410" cy="870" r="5"/>
+    <circle cx="1440" cy="870" r="5"/>
+    <circle cx="1470" cy="870" r="5"/>
+    <circle cx="1500" cy="870" r="5"/>
+  </g>
+
+</svg>

@@ -30,21 +30,32 @@
                 <img src="{% static 'img/logoIFcapau.png' %}" alt="Logo do Site" width="140" height="195">
                 <br>
                 <img src="{% static 'img/imagemcadeado.png' %}" alt="" width="90" height="90">
-                <h2>Controle Acadêmico</h2>
+                <h2>Portal Acadêmico</h2>
                 <p class="subtitle">Sistema de Colação de Grau · Acesso restrito a servidores</p>
             </div>
             <form class="card login-card" method="post" action="/login/">
                 {% csrf_token %}
-                <div class="field">
-                    <label for="login">Login / Matrícula SUAP</label>
-                    <input id="login" name="login" class="input" value="" required>
+                <div class="field mb-3">
+                    <label for="login" class="form-label">Login / Matrícula SUAP</label>
 
-                    <span id="erro-login" style="display: none;">Login Inválido</span> <!-- REMOVE ISSO AQUI -->
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        
+                        <input type="text" class="form-control" name="login" id="login" aria-describedby="basic-addon3 basic-addon4" required>
+                    </div>
                 </div>
+
                 <div class="field">
                     <label for="senha">Senha</label>
+
                     <div class="input-group">
-                        <input id="senha" name="senha" class="form-control" type="password" value="" minlength="8" required>
+                        <span class="input-group-text" id="basic-addon3">
+                            <i class="bi bi-lock-fill"></i>
+                        </span>
+
+                        <input type="password" class="form-control" name="senha" id="senha" aria-describedby="basic-addon3 basic-addon4" required>
                         <div class="input-group-text">
                             <a href="#" type="button" onclick="mostrarSenha()">
                                 <i id="icone-mostrar-exibir-senha" class="bi bi-eye-fill"></i>
