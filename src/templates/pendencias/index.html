@@ -84,7 +84,13 @@
                 </td>
             <td class="c">{% if a.biblioteca %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
             <td class="c">{% if a.disciplina %}<span class="ok">✓</span>{% else %}<span class="bad">✗</span>{% endif %}</td>
-                <td class="c"><span class="badge {{ a.situacao }}">{{ a.situacao|capfirst }}</span></td>
+            {% if a.situacao == 'completo' %}
+                <td class="c text-center"><span class="badge text-bg-success">{{ a.situacao|capfirst }}</span></td>
+            {% elif a.situacao == 'apto' %}
+                <td class="c text-center"><span class="badge text-bg-primary">{{ a.situacao|capfirst }}</span></td>
+            {% else %}
+                <td class="c text-center"><span class="badge text-bg-danger">{{ a.situacao|capfirst }}</span></td>
+            {% endif %}
             </tr>
             {% endfor %}
         </tbody>
