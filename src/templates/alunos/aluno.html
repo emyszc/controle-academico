@@ -1,158 +1,165 @@
-{% load static %}
-<!doctype html>
-<html lang="pt-BR">
+{% extends 'compartilhado/pagina-basica.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Controle Acadêmico — IFPI</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
+{% block conteudo_principal %}
+  <div class="d-flex flex-column gap-5">
+    <div class="card">
+      <div class="card-header text-bg-success">
+        <i class="bi bi-file-person"></i>
 
-<body>
-    <header class="top">
-        <div class="brand"><span class="logo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-            <div><b>Instituto Federal</b><small>Piauí — Campus Paulistana</small></div>
-        </div>
-        <nav class="nav"><a class="active" href="{% url 'pendencias' %}">Pendências</a><a class=""
-                href="{% url 'biblioteca' %}">Biblioteca <span class="count">4</span></a><a class=""
-                href="{% url 'disciplina' %}">Disciplina <span class="count">6</span></a><a class="" href="{% url 'turmas' %}">Turmas
-                e Alunos</a></nav>
-        <div class="user">Servidor<br><span style="color:#bbf7d0">Controle Acadêmico</span></div><a class="btn"
-            href="{% url 'index' %}">Sair</a>
-    </header>
-    <main class="page">
-        <div class="wrap">
-            <p><a class="tiny muted" href="{% url 'pendencias' %}">← Voltar para pendências</a></p>
-            <div class="grid2">
-                <section class="card">
-                    <div class="panel-head">
-                        <h1 class="title">Bruno Henrique Alves</h1>
-                        <p class="subtitle">Matrícula 2022002 · Agropecuária · 3º ano A</p>
-                    </div>
-                    <div class="section">
-                        <h2 style="font-size:14px">Dados do aluno</h2>
-                        <p class="tiny"><b>CPF:</b> 987.654.321-11</p>
-                        <p class="tiny"><b>E-mail:</b> bruno.alves@ifpi.edu.br</p>
-                        <div class="notice amber">Situação geral: <b>Pendente</b></div>
-                    </div>
-                </section>
-                <aside class="card">
-                    <div class="tabs"><a class="active" href="#documentos">Documentos <span class="count">5</span></a><a
-                            href="#biblioteca">Biblioteca <span class="count">1</span></a><a
-                            href="#disciplina">Disciplina <span class="count">1</span></a></div>
-                    <section id="documentos" class="section">
-                        <div class="between"><b class="tiny">DOCUMENTOS DE CONCLUSÃO</b><span>2/7</span></div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot done">✓</span>
-                                <div>
-                                    <div class="tiny">Histórico Escolar (Ensino Médio)</div>
-                                    <div class="tiny muted">08/08/2025</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot done">✓</span>
-                                <div>
-                                    <div class="tiny">Certificado de Conclusão do Ensino Médio</div>
-                                    <div class="tiny muted">08/08/2025</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">RG (cópia autenticada)</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">CPF (cópia)</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">Certidão de Nascimento ou Casamento</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">Título de Eleitor (opcional)</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">Comprovante de Quitação Eleitoral (opcional)</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">Comprovante de Alistamento Militar</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                        <div class="doc between">
-                            <div class="row"><span class="dot "></span>
-                                <div>
-                                    <div class="tiny">Foto 3x4</div>
-                                </div>
-                            </div>
-                            <form class="action-form" method="post" action="/documentos/aprovar/"><button
-                                    class="btn green sm">Aprovar</button></form>
-                            <form class="action-form" method="post" action="/documentos/recusar/"><button
-                                    class="btn outline sm">Recusar</button></form>
-                        </div>
-                    </section>
-                    <section id="biblioteca" class="section"><b class="tiny">BIBLIOTECA</b>
-                        <div class="notice red"><b>Multa — Zootecnia Básica</b><br>R$ 12,50 · vencimento 20/08/2025
-                        </div>
-                        <p class="tiny muted">Sincronizado em 16/08/2025 às 09:14</p>
-                    </section>
-                    <section id="disciplina" class="section"><b class="tiny">DISCIPLINA</b>
-                        <div class="notice red">Chave de armário não devolvida — 14B</div>
-                        <div class="notice green">✓ Nenhum livro didático pendente</div>
-                        <p class="tiny muted">Sincronizado em 16/08/2025 às 08:52</p>
-                    </section>
-                </aside>
+        Dados Pessoais
+      </div>
+
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="d-flex justify-content-center w-25">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-bg-info overflow-hidden"
+                 style="width: 200px; height: 200px;"
+            >
+              {% if aluno.foto_3x4 %}
+                <img src="{{ aluno.foto_3x4 }}" class="w-100 h-100 object-fit-cover" alt="{{ aluno.nome }}">
+              {% else %}
+                <span class="fs-1 fw-medium">
+                  {{ aluno.nome|first|upper }}{{ aluno.nome|last|upper }}
+                </span>
+              {% endif %}
             </div>
-        </div>
-    </main>
-    <footer class="footer"><span>IFPI – Instituto Federal do Piauí | Setor de Controle Acadêmico — Campus
-            Paulistana</span><span>Suporte &nbsp; Privacidade &nbsp; Sair</span></footer>
-</body>
+          </div>
 
-</html>
+          <div class="vr me-5"></div>
+
+          <div class="d-flex flex-column w-75 justify-content-around">
+            <div class="d-flex flex-column">
+              <span class="fs-3">Nome Completo</span>
+              <span class="fs-6">{{ aluno.nome }}</span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-column">
+                <span class="fs-3">Matrícula</span>
+                <span class="fs-6">{{ aluno.matricula }}</span>
+              </div>
+
+              <div class="d-flex flex-column">
+                <span class="fs-3">Nascimento</span>
+                <span class="fs-6">{{ aluno.data_nascimento }}</span>
+              </div>
+
+              <div class="d-flex flex-column">
+                <span class="fs-3">E-mail</span>
+                <span class="fs-6">{{ aluno.email }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header text-bg-success">
+        <i class="bi bi-mortarboard-fill"></i>
+
+        Informações Acadêmicas
+      </div>
+
+      <div class="card-body">
+        <div class="d-flex justify-content-around">
+          <div class="d-flex flex-column">
+            <span class="fs-3">Curso</span>
+            <span class="fs-6">{{ aluno.curso_turma.curso.nome }}</span>
+          </div>
+
+          <div class="d-flex flex-column">
+            <span class="fs-3">Turma</span>
+            <span class="fs-6">{{ aluno.curso_turma.ano }}º ano - Turma {{ aluno.curso_turma.turma.nome }}</span>
+          </div>
+
+          <div class="d-flex flex-column">
+            <span class="fs-3">Situação</span>
+
+            {% if aluno.ativo %}
+              <div class="badge rounded-pill text-bg-success">Regular</div>
+            {% else %}
+              <div class="badge rounded-pill text-bg-secondary">Inativo</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header text-bg-success">
+        <i class="bi bi-file-richtext-fill"></i>
+
+          Documentos
+        </div>
+      </div>
+
+      <div class="card-body d-flex justify-content-center">
+        <table class="table table-striped table-hover table-responsive align-middle">
+          <tbody>
+            {% for documento in documentos %}
+              <tr class="w-25">
+                <td>
+                  {{ documento.instance.tipo.nome }}
+                </td>
+
+                <td class="text-center" style="width: 10%">
+                  {% if documento.instance.pk %}
+                    <div class="badge rounded-pill text-bg-success">Enviado</div>
+                  {% else %}
+                    <div class="badge rounded-pill text-bg-warning">Pendente</div>
+                  {% endif %}
+                </td>
+
+                <td>
+                  <form action="{% url 'enviar_documento' aluno.matricula %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="tipo" value="{{ documento.instance.tipo.pk }}"/>
+
+                    <div class="d-flex gap-2">
+                      <input
+                        name="informacao"
+                        type="text"
+                        placeholder="Número ou qualquer informação/observação..."
+                        class="form-control w-50"
+                        value="{% if documento.instance.informacao %}{{ documento.instance.informacao }}{% endif %}"
+                      />
+
+                      <input
+                        id="arquivo-{{documento.instance.tipo.pk}}"
+                        type="file"
+                        class="d-none"
+                        name="arquivo"
+                      />
+
+                      <label for="arquivo-{{documento.instance.tipo.pk}}">
+                        <span class="btn btn-outline-info">
+                          <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                          Anexar Arquivo
+                        </span>
+                      </label>
+
+                      <button type="submit" class="btn btn-outline-success">
+                        <i class="bi bi-floppy2"></i>
+
+                        Salvar
+                      </button>
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            {% empty %}
+              <h4 class="muted text-center">
+                <i class="bi bi-ban"></i>
+
+                Nenhum documento encontrado
+              </h4>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
